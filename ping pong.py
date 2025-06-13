@@ -56,16 +56,16 @@ def p1_move_up():
     player1.sety(player1.ycor() + players_speed)
 
 def p1_move_down():
-    player1.sety(player1.ycor() + players_speed)
+    player1.sety(player1.ycor() - players_speed)
 
 def p2_move_up():
     player2.sety(player2.ycor() + players_speed)
 
 def p2_move_down():
-    player2.sety(player2.ycor() + players_speed)
+    player2.sety(player2.ycor() - players_speed)
 
 window.listen()
-window.onkeypress(p1_move_up, "w")
+window.onkeypress(p1_move_up, "w") 
 window.onkeypress(p1_move_down, "s")
 window.onkeypress(p2_move_up, "Up")
 window.onkeypress(p2_move_down, "Down")
@@ -73,22 +73,22 @@ window.onkeypress(p2_move_down, "Down")
 while True:
     window.update()
 
-    ball.setx(ball,xcor() + (ball_dx * ball_speed))
-    ball.sety(ball,ycor() + (ball_dy * ball_speed))
+    ball.setx(ball.xcor() + (ball_dx * ball_speed))
+    ball.sety(ball.ycor() + (ball_dy * ball_speed))
 
     if(ball.ycor() > 290):
         ball.sety(290)
         ball_dy *= -1
 
-    if(ball.ycor() > -290):
+    if(ball.ycor() < -290):
         ball.sety(-290)
         ball_dy *= -1
 
-    if ball.ycor() > -340 and ball.xcor() > -350 and ball.ycor() > (player1.ycor()-60) and ball.ycor() < (player1.ycor()+60):
+    if ball.xcor() < -340 and ball.xcor() > -350 and ball.ycor() > (player1.ycor()-60) and ball.ycor() < (player1.ycor()+60):
         ball.setx(-340)
         ball_dx *= -1
 
-    if ball.ycor() > 340 and ball.xcor() > 350 and ball.ycor() > (player1.ycor()-60) and ball.ycor() < (player1.ycor()+60):
+    if ball.xcor() > 340 and ball.xcor() < 350 and ball.ycor() > (player2.ycor()-60) and ball.ycor() < (player2.ycor()+60):
         ball.setx(340)
         ball_dx *= 1
 
